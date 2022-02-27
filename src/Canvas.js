@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 const randomColor = () =>
   "#" + Math.floor(Math.random() * 16777215).toString(16);
 
-const Canvas = ({ items = [] }) => {
+const Canvas = ({ items = [], scale = 1 }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -19,9 +19,14 @@ const Canvas = ({ items = [] }) => {
 
     for (const item of items) {
       ctx.fillStyle = randomColor();
-      ctx.fillRect(item.x, item.y, item.w, item.h);
+      ctx.fillRect(
+        item.x * scale,
+        item.y * scale,
+        item.w * scale,
+        item.h * scale
+      );
     }
-  }, [items]);
+  }, [items, scale]);
 
   return <canvas style={{ width: 1000, height: 1000 }} ref={canvasRef} />;
 };
