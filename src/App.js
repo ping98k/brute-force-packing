@@ -9,7 +9,7 @@ function App() {
 
   const randomBox =async ()=>{
     let boxList = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 6; i++) {
       boxList.push({ w: random(), h: random() });
     }
     setPacked(await scanPackForce(100, 100, boxList));
